@@ -1,0 +1,196 @@
+/* 기본 스타일 설정 */
+body {
+  margin: 0;
+  font-family: 'SUIT', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+#header {
+  width: 100%;
+  margin-top: 20px; /* 화면 맨 위에서 20px 떨어짐 */
+}
+
+.header_wrap {
+  width: 90%; /* 반응형을 위해 %로 조정 */
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 128px;
+  height: 128px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* 항목이 줄바꿈될 수 있도록 설정 */
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+}
+
+.gnb > li {
+  position: relative; /* 서브 메뉴의 절대 위치를 부모에 대해 설정 */
+  margin-left: 20px; /* 큰 화면에서는 간격을 좁힘 */
+}
+
+.gnb > li > a {
+  font-size: 15px;
+  font-weight: 900;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-block; /* 배경색이 글자 크기에 맞게 설정되도록 */
+}
+
+.gnb > li:hover > a {
+  background-color: red;
+  color: white;
+}
+
+.gnb > li ul {
+  display: none;
+  position: absolute;
+  top: 100%; /* 부모 요소 바로 아래에 위치 */
+  left: 0; /* 기본적으로 부모 요소의 왼쪽에 맞춤 */
+  width: auto;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: white;
+  border: 1px solid #ccc; /* 경계선 추가 (선택 사항) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 (선택 사항) */
+  z-index: 10; /* 서브 메뉴가 다른 요소 위에 표시되도록 설정 */
+}
+
+.gnb > li:hover ul {
+  display: block;
+}
+
+.gnb > li ul li {
+  width: 100%; /* 부모의 너비에 맞춤 */
+  margin-bottom: 0; /* 기본 간격 제거 */
+}
+
+.gnb > li ul li a {
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap; /* 텍스트가 길어질 경우 줄바꿈 방지 */
+  display: block; /* a 태그가 블록 요소로 작동하여 padding이 적용됨 */
+}
+
+.gnb > li ul li a:hover {
+  background-color: red;
+  color: white;
+}
+
+#mainvideo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.video video {
+  width: 100%;
+  max-width: 800px; /* 필요에 따라 조정 */
+  height: auto;
+}
+
+#mainvideo p {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 20px; /* 동영상과 텍스트 사이의 간격 */
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* 로고와 네비게이션 사이의 간격 조정 */
+  }
+
+  .header_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* 가로 폭을 100%로 설정 */
+    gap: 10px; /* 로고와 nav 사이의 간격 조정 */
+  }
+
+  .logo {
+    margin-bottom: 10px; /* 로고와 nav 사이의 간격 조정 */
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* 네비게이션을 가로폭 100%로 설정 */
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gnb > li {
+    margin-left: 0;
+    margin-bottom: 10px; /* li 간의 간격 설정 */
+  }
+
+  .gnb > li ul {
+    position: absolute;
+    top: 0; /* 부모 메뉴 항목의 상단과 정렬 */
+    left: 100%; /* 부모 메뉴 항목의 오른쪽 끝에 배치 */
+    width: 200px; /* 원하는 너비로 설정 */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: white;
+    border: 1px solid #ccc; /* 경계선 추가 (선택 사항) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 (선택 사항) */
+    opacity: 0; /* 기본적으로 숨김 처리 */
+    transform: translateX(10px); /* 오른쪽에서 나타나는 효과 추가 */
+    transition: opacity 0.3s, transform 0.3s; /* 부드러운 전환 효과 추가 */
+    z-index: 10; /* 서브 메뉴가 다른 요소 위에 표시되도록 설정 */
+  }
+
+  .gnb > li:hover ul {
+    opacity: 1; /* 호버 시 나타나도록 설정 */
+    transform: translateX(0); /* 위치 초기화 */
+  }
+
+  .gnb > li ul li {
+    margin-bottom: 5px; /* 기본 간격으로 설정 */
+  }
+
+  .gnb > li ul li a {
+    padding: 5px 10px;
+  }
+}
